@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:alhikam_mart_mobile/menu.dart';
+import 'package:alhikam_mart_mobile/screens/menu.dart';
+import 'package:alhikam_mart_mobile/models/items_model.dart';
 
+List<Product> products = [];
 
 void main() {
   runApp(const MyApp());
