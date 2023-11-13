@@ -53,7 +53,7 @@ Your neighborhood's one-stop shop for groceries and essentials with a touch of l
 - Mengimplementasikan tampilan card dengan ikon dan teks, serta menambahkan fungsi onTap untuk menampilkan `SnackBar` ketika card di-tap.
 </details>
 
-<!-- <details> -->
+<details>
 <summary>&ensp;Tugas 8</summary>
 
 #### 1. Jelaskan perbedaan antara Navigator.push() dan Navigator.pushReplacement(), disertai contoh!
@@ -150,6 +150,4 @@ Penerapan **Clean Architecture** pada aplikasi Flutter melibatkan pemisahan kode
     - Membuat fungsi untuk membuat objek baru dari class `Product`, dan menambahkannya ke list `products` setiap tombol save pada `shoplist_form.dart` ditekan.
     - Membuat `ListTile` baru dengan nama **Lihat Produk** pada Left Drawer
     - Membuat routing dari **Left Drawer** dan tombol **Lihat Produk** di home ke page untuk melihat semua prduk (`shoplist_items.dart`)
-
-
 </details>
