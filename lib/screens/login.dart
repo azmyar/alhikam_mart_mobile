@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api, use_build_context_synchronously
+
 import 'package:alhikam_mart_mobile/models/user.dart';
 import 'package:alhikam_mart_mobile/provider.dart';
 import 'package:alhikam_mart_mobile/screens/menu.dart';
@@ -68,7 +70,6 @@ class _LoginPageState extends State<LoginPage> {
                                 String password = _passwordController.text;
 
                                 // Cek kredensial
-                                // TODO: Ganti URL dan jangan lupa tambahkan trailing slash (/) di akhir URL!
                                 // Untuk menyambungkan Android emulator dengan Django pada localhost,
                                 // gunakan URL http://10.0.2.2/
                                 final response = await request.login("http://127.0.0.1:8000/auth/login/", {

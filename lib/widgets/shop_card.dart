@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:alhikam_mart_mobile/screens/list_product.dart';
 import 'package:alhikam_mart_mobile/screens/login.dart';
 import 'package:flutter/material.dart';
@@ -36,7 +38,6 @@ class ShopCard extends StatelessWidget {
 
             else if (item.name == "Logout")  {
               final response = await request.logout(
-                  // TODO: Ganti URL dan jangan lupa tambahkan trailing slash (/) di akhir URL!
                   "http://127.0.0.1:8000/auth/logout/");
               String message = response["message"];
               if (response['status']) {
@@ -50,7 +51,7 @@ class ShopCard extends StatelessWidget {
                 );
               } else {
                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                  content: Text("$message"),
+                  content: Text(message),
                 ));
               }
             }

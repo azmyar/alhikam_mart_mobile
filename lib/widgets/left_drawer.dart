@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:alhikam_mart_mobile/main.dart';
 import 'package:alhikam_mart_mobile/screens/menu.dart';
 import 'package:alhikam_mart_mobile/screens/shoplist_form.dart';
 import 'package:alhikam_mart_mobile/screens/list_product.dart';

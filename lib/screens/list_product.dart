@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api, non_constant_identifier_names
+
 import 'package:alhikam_mart_mobile/models/user.dart';
 import 'package:alhikam_mart_mobile/provider.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +18,6 @@ class ProductPage extends StatefulWidget {
 
 class _ProductPageState extends State<ProductPage> {
 Future<List<Product>> fetchProduct(id) async {
-    // TODO: Ganti URL dan jangan lupa tambahkan trailing slash (/) di akhir URL!
     var url = Uri.parse(
         'http://127.0.0.1:8000/json/user/$id/');
     var response = await http.get(
