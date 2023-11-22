@@ -1,8 +1,11 @@
+import 'package:alhikam_mart_mobile/models/user.dart';
+import 'package:alhikam_mart_mobile/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:alhikam_mart_mobile/models/product.dart';
 import 'package:alhikam_mart_mobile/widgets/left_drawer.dart';
+import 'package:provider/provider.dart';
 
 class ProductPage extends StatefulWidget {
     const ProductPage({Key? key}) : super(key: key);
@@ -12,10 +15,10 @@ class ProductPage extends StatefulWidget {
 }
 
 class _ProductPageState extends State<ProductPage> {
-Future<List<Product>> fetchProduct() async {
+Future<List<Product>> fetchProduct(id) async {
     // TODO: Ganti URL dan jangan lupa tambahkan trailing slash (/) di akhir URL!
     var url = Uri.parse(
-        'http://127.0.0.1:8000/json/');
+        'http://127.0.0.1:8000/json/user/$id/');
     var response = await http.get(
         url,
         headers: {"Content-Type": "application/json"},
@@ -36,13 +39,15 @@ Future<List<Product>> fetchProduct() async {
 
 @override
 Widget build(BuildContext context) {
+    User? user = Provider.of<UserProvider>(context).user;
+
     return Scaffold(
         appBar: AppBar(
         title: const Text('Product'),
         ),
         drawer: const LeftDrawer(),
         body: FutureBuilder(
-            future: fetchProduct(),
+            future: fetchProduct(user?.id),
             builder: (context, AsyncSnapshot snapshot) {
                 if (snapshot.data == null) {
                     return const Center(child: CircularProgressIndicator());

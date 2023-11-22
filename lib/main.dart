@@ -1,6 +1,6 @@
+import 'package:alhikam_mart_mobile/provider.dart';
 import 'package:alhikam_mart_mobile/screens/login.dart';
 import 'package:flutter/material.dart';
-import 'package:alhikam_mart_mobile/screens/menu.dart';
 import 'package:alhikam_mart_mobile/models/product.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
@@ -8,7 +8,12 @@ import 'package:provider/provider.dart';
 List<Product> products = [];
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => UserProvider(),
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

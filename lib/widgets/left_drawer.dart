@@ -14,12 +14,12 @@ class LeftDrawer extends StatelessWidget {
         children: [
           const DrawerHeader(
             decoration: BoxDecoration(
-              color: Colors.indigo,
+              color: Color(0xFF77B162)
             ),
             child: Column(
               children: [
                 Text(
-                  'Shopping List',
+                  'Alhikam Mart',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 30,

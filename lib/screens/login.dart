@@ -1,3 +1,5 @@
+import 'package:alhikam_mart_mobile/models/user.dart';
+import 'package:alhikam_mart_mobile/provider.dart';
 import 'package:alhikam_mart_mobile/screens/menu.dart';
 import 'package:flutter/material.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
@@ -75,8 +77,14 @@ class _LoginPageState extends State<LoginPage> {
                                 });
                     
                                 if (request.loggedIn) {
+
                                     String message = response['message'];
+                                    int id = response['id'];
                                     String uname = response['username'];
+
+                                    User newUser = User(id: id, username: uname);
+                                    Provider.of<UserProvider>(context, listen: false).setUser(newUser);
+                 
                                     Navigator.pushReplacement(
                                         context,
                                         MaterialPageRoute(builder: (context) => MyHomePage()),

@@ -3,7 +3,9 @@ import 'package:alhikam_mart_mobile/widgets/left_drawer.dart';
 import 'package:alhikam_mart_mobile/widgets/shop_card.dart';
 
 class MyHomePage extends StatelessWidget {
+
     MyHomePage({Key? key}) : super(key: key);
+    
 
     final List<ShopItem> items = [
         ShopItem("Lihat Produk", Icons.checklist, const Color(0xFF77B162)),
