@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:alhikam_mart_mobile/main.dart';
 import 'package:alhikam_mart_mobile/screens/menu.dart';
 import 'package:alhikam_mart_mobile/screens/shoplist_form.dart';
-import 'package:alhikam_mart_mobile/screens/shoplist_items.dart';
+import 'package:alhikam_mart_mobile/screens/list_product.dart';
 
 class LeftDrawer extends StatelessWidget {
   const LeftDrawer({super.key});
@@ -52,15 +52,15 @@ class LeftDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: const Icon(Icons.checklist),
-            title: const Text('Lihat Produk'),
-            // Bagian redirection ke MyHomePage
-            onTap: () 
-                  {
-                Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => ProductListPage(products: products)));
-              }
-            ,
+              leading: const Icon(Icons.shopping_basket),
+              title: const Text('Daftar Produk'),
+              onTap: () {
+                  // Route menu ke halaman produk
+                  Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ProductPage()),
+                  );
+              },
           ),
           ListTile(
             leading: const Icon(Icons.add_shopping_cart),

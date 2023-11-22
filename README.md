@@ -13,6 +13,7 @@ Your neighborhood's one-stop shop for groceries and essentials with a touch of l
     - Stateful widget adalah jenis widget yang memiliki data yang dapat berubah (state) di dalamnya. Data ini dapat diperbarui selama siklus hidup widget.
     - Stateful widget umumnya digunakan untuk tampilan yang memerlukan pembaruan data atau interaksi pengguna yang kompleks, seperti formulir atau daftar item yang dapat digulir.
     - Ketika data di dalam stateful widget berubah, widget tersebut dapat membangun kembali tampilan secara otomatis.
+
 #### 2. Sebutkan seluruh widget yang kamu gunakan untuk menyelesaikan tugas ini dan jelaskan fungsinya masing-masing.
 - **Scaffold**: Scaffold adalah widget yang digunakan sebagai kerangka dasar untuk halaman aplikasi. Ia mengatur elemen-elemen seperti AppBar dan body, membuat tata letak umum untuk halaman.
 
@@ -35,6 +36,7 @@ Your neighborhood's one-stop shop for groceries and essentials with a touch of l
 - **Text**: Text adalah widget yang digunakan untuk menampilkan teks. Dalam aplikasi ini, digunakan untuk menampilkan judul dan nama item.
 
 - **Icon**: Widget Icon digunakan untuk menampilkan ikon pada tampilan item di dalam grid. Ikon ini dapat bervariasi sesuai dengan item yang direpresentasikan. 
+
 #### 3. Step by Step
 - Buat file baru bernama `menu.dart` dalam direktori `alhikam_mart_mobile/lib` dan pindahkan kode class `MyHomePage` ke file `menu.dart`.
 
@@ -150,4 +152,99 @@ Penerapan **Clean Architecture** pada aplikasi Flutter melibatkan pemisahan kode
     - Membuat fungsi untuk membuat objek baru dari class `Product`, dan menambahkannya ke list `products` setiap tombol save pada `shoplist_form.dart` ditekan.
     - Membuat `ListTile` baru dengan nama **Lihat Produk** pada Left Drawer
     - Membuat routing dari **Left Drawer** dan tombol **Lihat Produk** di home ke page untuk melihat semua prduk (`shoplist_items.dart`)
+</details>
+
+<details>
+<summary>&ensp;Tugas 9</summary>
+
+#### 1. Apakah bisa kita melakukan pengambilan data JSON tanpa membuat model terlebih dahulu? Jika iya, apakah hal tersebut lebih baik daripada membuat model sebelum melakukan pengambilan data JSON?
+
+Ya, kita bisa mengambil data JSON dari Django ke Flutter tanpa membuat model di Flutter, tetapi membuat model di Flutter umumnya lebih baik karena memberikan validasi tipe data, abstraksi tingkat tinggi, dan kemudahan pemeliharaan kode.
+
+#### 2. Jelaskan fungsi dari CookieRequest dan jelaskan mengapa instance CookieRequest perlu untuk dibagikan ke semua komponen di aplikasi Flutter.
+
+**CookieRequest** memastikan konsistensi sumber data, memudahkan pembaruan dan akses data, mengurangi redundansi kode, mendukung pemodelan arsitektur yang terstruktur, dan memberikan fleksibilitas dalam pembaharuan.
+
+#### 3. Jelaskan mekanisme pengambilan data dari JSON hingga dapat ditampilkan pada Flutter.
+
+- Pengguna membuka aplikasi Flutter.
+- Aplikasi Flutter melakukan pemanggilan fungsi `fetchData`.
+- Fungsi `fetchData` mengirim permintaan HTTP GET ke backend Django.
+- Django mengambil data dari database melalui model dan serializer.
+- Django merespons dengan data JSON.
+- Aplikasi Flutter menerima respons JSON dan mengonversinya menjadi objek Flutter menggunakan model.
+- Data ditampilkan dalam widget Flutter, memberikan pengguna antarmuka pengguna yang sesuai dengan data yang diterima.
+
+#### 4.  Jelaskan mekanisme autentikasi dari input data akun pada Flutter ke Django hingga selesainya proses autentikasi oleh Django dan tampilnya menu pada Flutter.
+
+- Permintaan Login dari Flutter ke Django:
+    - Pengguna memasukkan informasi login di Flutter.
+    - Permintaan HTTP POST dikirim ke endpoint login Django.
+- Fungsi Login di Django:
+    - Django memverifikasi kredensial dengan authenticate.
+    - Jika valid, pengguna ditandai sebagai terautentikasi dengan auth_login.
+- Respon ke Flutter:
+    - Django mengirimkan respons JSON ke Flutter dengan status login.
+    - Sukses: Berisi informasi pengguna dan pesan sukses.
+    - Gagal: Berisi pesan kesalahan dan status 401 jika tidak diizinkan.
+- Pengolahan Respon di Flutter:
+    - Flutter mengelola respons, menyimpan token atau mengambil tindakan selanjutnya.
+
+#### 5. Sebutkan seluruh widget yang kamu pakai pada tugas ini dan jelaskan fungsinya masing-masing.
+
+- **Drawer (LeftDrawer):**
+Menyediakan menu navigasi kiri di layar, mungkin berisi opsi navigasi tambahan.
+
+- **Form:**
+Mengelompokkan dan mengatur TextFormField dalam satu formulir.
+Menggunakan GlobalKey<FormState> untuk validasi formulir.
+
+- **TextFormField (Nama Produk, Harga, Deskripsi):**
+Input field untuk memasukkan nama produk, harga, dan deskripsi.
+Dilengkapi dengan fungsi onChanged untuk memperbarui nilai variabel terkait.
+
+- **ElevatedButton:**
+Tombol yang digunakan untuk mengirimkan data formulir ke server Django.
+Menggunakan metode POST untuk mengirim data JSON ke endpoint tertentu.
+
+- **SnackBar:**
+Menampilkan pesan pemberitahuan di bagian bawah layar setelah mengirimkan data ke server.
+Dua snackbar berbeda untuk kasus keberhasilan dan kegagalan.
+
+- **ListTile:**
+Digunakan untuk membuat item daftar di drawer.
+Setiap ListTile memiliki ikon, judul, dan fungsi onTap yang menentukan tindakan saat item daftar diklik.
+
+- **Navigator.pushReplacement:**
+Mengaktifkan navigasi ke halaman lain dan menggantikan halaman saat ini, berguna untuk kembali ke halaman utama atau mengganti halaman setelah tindakan tertentu.
+
+- **Navigator.push:**
+Menangani navigasi ke halaman lain tanpa menggantikan halaman saat ini, seperti ketika pengguna memilih untuk melihat daftar produk.
+
+
+#### 6. Step by Step
+- Django
+    - Auth
+        - Membuat app baru dengan nama `authentication`.
+        - Menambahkan fungsi login dan logout pada `views.py` di app `authentication`.
+        - Menghubungkan url ke views dengan menambah path login dan logout pada `urls.py`.
+        - Menghubungkan path pada app `authentication` dengan menambah path penghubung pada `urls.py` di app utama `alhikam_mart`.
+        
+    - Tambah Produk
+        - Menambah fungsi `create_product_flutter` di `views.py` di app `main` untuk membuat produk baru.
+    
+    - Lihat Produk
+        - Menggunakan url JSON untuk membuat model kustom dengan bantuan website [QuickType](http://app.quicktype.io/).
+- Flutter
+    - Auth
+        - Menyediakan **CookieRequest** library ke semua child widgets dengan menggunakan `Provider` di `main.dart`.
+        - Membuat tampilan login dengan menambah file `login.dart` pada folder lib/screens.
+    
+    - Tambah Produk
+        - Mengubah `onPressed:()` pada file `shoplist_form.dart` menjadi request ke django untuk menjalankan fungsi `create_product_flutter`.
+
+    - Lihat Produk
+        - Membuat model kustom dengan bantuan website [QuickType](http://app.quicktype.io/)
+        - Membuat tampilan daftar produk dengan menambah file `list_product.dart` pada folder lib/screens.
+        - Membuat fungsi fetch data JSON dari django pada file `list_product.dart`
 </details>
